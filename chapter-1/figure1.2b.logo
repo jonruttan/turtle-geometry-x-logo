@@ -1,0 +1,8 @@
+; Computation 1.1.2.1 (implied), p.7
+TO TRIANGLE SIZE
+    REPEAT 3
+        FD SIZE
+        RT 120
+
+; Figure 1.2b, p.7#fig.1
+TRIANGLE 100
