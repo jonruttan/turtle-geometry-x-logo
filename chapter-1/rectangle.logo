@@ -1,0 +1,13 @@
+; Computation 1.1.1.3, p.6#comp.0
+TO SQUAREPIECE SIZE
+    FD SIZE
+    RT 90
+
+; Computation 1.1.1.5, p.6#comp.2
+TO RECTANGLE SIDE1 SIDE2
+    REPEAT 2
+        SQUAREPIECE SIDE1
+        SQUAREPIECE SIDE2
+
+; Example 1.1.1.2, p.6#ex.1
+RECTANGLE 100 50
