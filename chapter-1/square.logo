@@ -1,0 +1,8 @@
+; Computation 1.1.1.2, p.5#comp.2
+TO SQUARE SIZE
+    REPEAT 4
+        FD SIZE
+        RT 90
+
+; Example 1.1.1.1, p.6#ex.0
+SQUARE 100
