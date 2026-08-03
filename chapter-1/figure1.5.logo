@@ -1,0 +1,9 @@
+; Figure 1.5, p.10#fig.0
+; The book's CIRCLE is REPEAT FOREVER; one full turn closes the circuit,
+; so the batch version runs 360 steps.
+TO CIRCLE
+    REPEAT 360
+        FD 1
+        RT 1
+
+CIRCLE
