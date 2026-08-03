@@ -1,0 +1,20 @@
+; Computation 1.1.1.2, p.5#comp.2
+TO SQUARE SIZE
+    REPEAT 4
+        FD SIZE
+        RT 90
+
+; Computation 1.1.2.1 (implied), p.7
+TO TRIANGLE SIZE
+    REPEAT 3
+        FD SIZE
+        RT 120
+
+; Figure 1.3b, p.8#fig.1
+TO HOUSE SIDE
+    SQUARE SIDE
+    FD SIDE
+    RT 30
+    TRIANGLE SIDE
+
+HOUSE 100
