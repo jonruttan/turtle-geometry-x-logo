@@ -1,0 +1,46 @@
+name: CI
+
+# Every figure runs on a released x-lang. The Logo dialect ships inside the
+# language -- apps/logo in the x-lang tree, an amalgam in every release -- so
+# there is nothing here to pin: install a release and you have the interpreter
+# these programs are written for. X_LANG_VERSION is CI's toolchain version and
+# nothing more; the programs are expected to work on any x-lang at or above
+# the floor the README names.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  X_LANG_VERSION: "v0.4.0"
+
+jobs:
+  figures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install x from a release tarball
+        run: |
+          base="https://github.com/jonruttan/x-lang/releases/download/${X_LANG_VERSION}"
+          curl -fsSLO "${base}/x-${X_LANG_VERSION}-linux-x86_64.tar.gz"
+          curl -fsSLO "${base}/x-${X_LANG_VERSION}-linux-x86_64.tar.gz.sha256"
+          sha256sum -c "x-${X_LANG_VERSION}-linux-x86_64.tar.gz.sha256"
+          tar xzf "x-${X_LANG_VERSION}-linux-x86_64.tar.gz"
+          # Absolute path: the relocatable wrapper resolves its tree from $0.
+          echo "$PWD/x-${X_LANG_VERSION}/bin" >> "$GITHUB_PATH"
+
+      - name: Every figure runs
+        run: |
+          rc=0
+          for f in chapter-*/*.logo; do
+            printf '%s: ' "$f"
+            if out=$(x -l logo -f "$f" 2>&1); then echo ok
+            else echo FAIL; printf '%s\n' "$out" | tail -3; rc=1; fi
+          done
+          exit $rc

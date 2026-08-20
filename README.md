@@ -26,7 +26,16 @@ its subject (`Figure 1.2a, p.7#fig.0 — …`), in book-presentation order, so
 
 ## Running
 
-From an x-lang checkout:
+Requires [x-lang](https://github.com/jonruttan/x-lang) **v0.4.0 or later** — the
+Logo dialect ships with the language, so a release is all you need. Install the
+`x` command from a [release tarball](https://github.com/jonruttan/x-lang/releases)
+(no toolchain required):
+
+```sh
+x -l logo -f chapter-1/square.logo   # batch; writes the bytecode to /tmp/turtle.bc
+```
+
+For a live turtle, run the REPL and viewer from an x-lang checkout:
 
 ```sh
 sh x.sh -l logo                     # REPL + live viewer on localhost:8080
@@ -34,12 +43,6 @@ sh x.sh -l logo                     # REPL + live viewer on localhost:8080
 
 ```logo
 LOAD "chapter-1/square.logo"
-```
-
-Or in batch, which writes the turtle's bytecode stream to `/tmp/turtle.bc`:
-
-```sh
-sh x.sh -l logo -f chapter-1/square.logo
 ```
 
 ## License
