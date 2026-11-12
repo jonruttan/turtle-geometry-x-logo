@@ -2,12 +2,13 @@
 
 The programs from *Turtle Geometry: The Computer as a Medium for Exploring
 Mathematics* (Abelson and diSessa, MIT Press), written in the book's own
-Turtle Procedure Notation and run unchanged on x/Logo — the Logo dialect of
+Turtle Procedure Notation and run unchanged on x/Logo —
+[x-logo](https://github.com/jonruttan/x-logo), Logo hosted on
 [x-lang](https://github.com/jonruttan/x-lang).
 
 Companion code for the [Turtle Geometry blog
-series](https://jonruttan.github.io), which works through the book figure by
-figure.
+series](https://jonruttan.github.io/turtle-geometry/), which works through the
+book figure by figure.
 
 ## Layout
 
@@ -26,19 +27,30 @@ its subject (`Figure 1.2a, p.7#fig.0 — …`), in book-presentation order, so
 
 ## Running
 
-Requires [x-lang](https://github.com/jonruttan/x-lang) **v0.4.0 or later** — the
-Logo dialect ships with the language, so a release is all you need. Install the
-`x` command from a [release tarball](https://github.com/jonruttan/x-lang/releases)
-(no toolchain required):
+CI runs these programs on [x-lang](https://github.com/jonruttan/x-lang)
+**v0.4.0**, a release in which Logo shipped with the language: install the `x`
+command from that [release's
+tarball](https://github.com/jonruttan/x-lang/releases/tag/v0.4.0) (no toolchain
+required) and nothing else is needed.
 
 ```sh
 x -l logo -f chapter-1/square.logo   # batch; writes the bytecode to /tmp/turtle.bc
 ```
 
-For a live turtle, run the REPL and viewer from an x-lang checkout:
+In current x-lang releases Logo is a separate lang,
+[x-logo](https://github.com/jonruttan/x-logo), installed once:
 
 ```sh
-sh x.sh -l logo                     # REPL + live viewer on localhost:8080
+x --install-lang https://github.com/jonruttan/x-logo/releases/latest/download/lang.pin.xon
+```
+
+The programs here are not yet run against it in CI.
+
+For a live turtle, run the session, which serves the viewer and prints its
+address:
+
+```sh
+x -l logo
 ```
 
 ```logo
